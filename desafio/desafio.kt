@@ -25,6 +25,11 @@ data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>, 
         }
         return duracaoTotal/60
     }
+
+    fun criarDescricao(): String {
+        return "A Formação ${nome} tem duração de ${calcularDuracaoTotalHoras()} hora(s), " + 
+            "e aborda conteúdos de nível ${nivel.toString().lowercase()}"
+    }
 }
 
 fun main() {
@@ -40,11 +45,10 @@ fun main() {
     
     // criação das formaçôes
     val formacaoKotlin = Formacao("Kotlin Developer", conteudoKotlin, Nivel.INICIANTE)
-    println("A Formação Kotlin Developer tem duração de ${formacaoKotlin.calcularDuracaoTotalHoras()} hora(s), " + 
-            "e aborda conteúdos de nível ${formacaoKotlin.nivel.toString().lowercase()}")
+    val formacaoKotlin = Formacao("Kotlin Developer", conteudoKotlin, Nivel.INICIANTE)
+    println(formacaoKotlin.criarDescricao())
     val formacaoJava = Formacao("Java Developer", conteudoJava, Nivel.INTERMEDIARIO)
-    println("A Formação Java Developer tem duração de ${formacaoJava.calcularDuracaoTotalHoras()} hora(s), " + 
-            "e aborda conteúdos de nível ${formacaoJava.nivel.toString().lowercase()}")
+    println(formacaoJava.criarDescricao())
     
     // criação dos usuários
     val ana = Usuario("Ana", 27)
